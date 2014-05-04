@@ -4,7 +4,9 @@
     <string name="app_name">GeoQuiz</string>
     <string name="true_button">True</string>
     <string name="false_button">False</string>
-    <string name="question">is pop poppy?</string>
+    <string name="question">Is pop poppy?</string>
+    <string name="true_toast">Correct</string>
+    <string name="false_toast">Incorrect</string>
     <string name="action_settings">Settings</string>
 
 </resources>
