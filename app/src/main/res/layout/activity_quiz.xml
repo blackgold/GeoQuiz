@@ -18,8 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="24dp"
-            android:text="@string/question"
-            android:id="@+id/textView" />
+            android:id="@+id/questionTextView" />
 
         <LinearLayout
             android:orientation="horizontal"
@@ -29,14 +28,38 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/false_button"
-                android:id="@+id/buttonYes" />
+                android:drawableLeft="@drawable/ic_launcher_no"
+                android:drawablePadding="4dp"
+                android:id="@+id/buttonFalse" />
+
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/true_button"
-                android:id="@+id/buttonNo" />
+                android:drawableLeft="@drawable/ic_launcher_ok"
+                android:drawablePadding="4dp"
+                android:id="@+id/buttonTrue" />
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/buttonPrevious"
+                    android:drawableLeft="@drawable/ic_launcher_previous"
+                    android:drawablePadding="4dp"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/buttonNext"
+                    android:drawableLeft="@drawable/ic_launcher_next"
+                    android:drawablePadding="4dp"/>
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>
