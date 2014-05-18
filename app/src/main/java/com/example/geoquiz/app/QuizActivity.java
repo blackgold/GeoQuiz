@@ -8,8 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.util.Log;
 
 public class QuizActivity extends ActionBarActivity {
+    private static final String TAG = "QuizActivity";
+    private static final String KEY = "index";
     private Button mTrueButton;
     private Button mFalseButton;
     private Button mNextButton;
@@ -47,6 +50,9 @@ public class QuizActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(savedInstanceState != null) {
+            mCurrentIndex = savedInstanceState.getInt(KEY,0);
+        }
         setContentView(R.layout.activity_quiz);
 
         mTrueButton = (Button)findViewById(R.id.buttonTrue);
@@ -111,4 +117,40 @@ public class QuizActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onStart(){
+        super.onStart();
+        Log.d(TAG,"onStart() called");
+    }
+
+    @Override
+    public void onPause(){
+        super.onStart();
+        Log.d(TAG,"onPause() called");
+    }
+
+    @Override
+    public void onResume(){
+        super.onStart();
+        Log.d(TAG,"onResume() called");
+    }
+
+    @Override
+    public void onStop(){
+        super.onStart();
+        Log.d(TAG,"onStop() called");
+    }
+
+    @Override
+    public void onDestroy(){
+        super.onStart();
+        Log.d(TAG,"onDestroy() called");
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState){
+        super.onSaveInstanceState(savedInstanceState);
+        Log.d(TAG,"onSavedInstance");
+        savedInstanceState.putInt(KEY,mCurrentIndex);
+    }
 }
