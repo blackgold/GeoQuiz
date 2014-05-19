@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.util.Log;
+import android.content.Intent;
 
 public class QuizActivity extends ActionBarActivity {
     private static final String TAG = "QuizActivity";
@@ -17,6 +18,9 @@ public class QuizActivity extends ActionBarActivity {
     private Button mFalseButton;
     private Button mNextButton;
     private Button mPreviousButton;
+    private Button mCheatButton;
+    private boolean isCheater;
+
     private TextView mQuestionTextView;
     private TrueFalse[] mQuestionBank = new TrueFalse[]{
       new TrueFalse(R.string.question_1,false),
@@ -35,6 +39,10 @@ public class QuizActivity extends ActionBarActivity {
         boolean answerIsTrue = mQuestionBank[mCurrentIndex].ismTrueQuestion();
         int messageResId = 0;
         //System.out.println(""+userPressedTrue+ " " + answerIsTrue);
+        if(isCheater)
+        {
+            messageResId = R.string.judgement_toast;
+        }
         if(userPressedTrue == answerIsTrue)
         {
             messageResId = R.string.true_toast;
@@ -77,7 +85,21 @@ public class QuizActivity extends ActionBarActivity {
             public void onClick(View v)
             {
                 mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
+                isCheater=false;
                 updateQuestion();
+            }
+        });
+
+        mCheatButton = (Button)findViewById(R.id.buttonCheat);
+        mCheatButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v)
+            {
+                Intent i = new Intent(QuizActivity.this,CheatActivity.class);
+                i.putExtra(CheatActivity.EXTRA_ANSWER,mQuestionBank[mCurrentIndex].ismTrueQuestion());
+                i.putExtra(CheatActivity.EXTRA_QUESTION,mQuestionBank[mCurrentIndex].getmQuestion());
+                startActivityForResult(i, 0);
+
             }
         });
 
@@ -86,8 +108,9 @@ public class QuizActivity extends ActionBarActivity {
             @Override
             public void onClick(View v)
             {
-                if(mCurrentIndex==0) mCurrentIndex=mQuestionBank.length;
                 mCurrentIndex = (mCurrentIndex - 1) % mQuestionBank.length;
+                if(mCurrentIndex < 0) mCurrentIndex = 0;
+                isCheater=false;
                 updateQuestion();
             }
         });
@@ -152,5 +175,12 @@ public class QuizActivity extends ActionBarActivity {
         super.onSaveInstanceState(savedInstanceState);
         Log.d(TAG,"onSavedInstance");
         savedInstanceState.putInt(KEY,mCurrentIndex);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        if(data == null) return;
+        isCheater = data.getBooleanExtra(CheatActivity.EXTRA_ANSWER_SHOWN,false);
     }
 }

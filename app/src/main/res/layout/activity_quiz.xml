@@ -9,20 +9,20 @@
     tools:context="com.example.geoquiz.app.QuizActivity">
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:padding="24dp"
-            android:id="@+id/questionTextView" />
+    <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_gravity="center_horizontal"
+         android:padding="24dp"
+         android:id="@+id/questionTextView" />
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_gravity="center_horizontal|center_vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+     <LinearLayout
+         android:orientation="horizontal"
+         android:layout_gravity="center_horizontal|center_vertical"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content">
 
-            <Button
+          <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_launcher_no"
@@ -30,29 +30,39 @@
                 android:id="@+id/buttonFalse" />
 
 
-            <Button
+           <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_launcher_ok"
                 android:drawablePadding="4dp"
                 android:id="@+id/buttonTrue" />
 
-        </LinearLayout>
+     </LinearLayout>
 
 
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|left"
-                    android:id="@+id/buttonPrevious"
-                    android:drawableLeft="@drawable/ic_launcher_previous"
-                    android:drawablePadding="4dp"/>
 
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right|bottom"
-                    android:id="@+id/buttonNext"
-                    android:drawableLeft="@drawable/ic_launcher_next"
-                    android:drawablePadding="4dp"/>
+
+     <Button
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_gravity="bottom|left"
+         android:id="@+id/buttonPrevious"
+         android:drawableLeft="@drawable/ic_launcher_previous"
+         android:drawablePadding="4dp"/>
+
+     <Button
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_gravity="right|bottom"
+         android:id="@+id/buttonNext"
+         android:drawableLeft="@drawable/ic_launcher_next"
+         android:drawablePadding="4dp"/>
+
+    <Button
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="@string/cheat_button"
+         android:drawablePadding="4dp"
+         android:id="@+id/buttonCheat"
+        android:layout_gravity="center_horizontal|bottom" />
 </FrameLayout>
